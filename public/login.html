@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobify - Login</title>
+  <link rel="stylesheet" href="./styles/login.css">
+</head>
+
+<body>
+  <div class="container">
+    <form class="LoginCard" autocomplete="off">
+      <div class="LoginCard-header">
+        <img class="LoginCard-image" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Lock_font_awesome.svg"
+          alt="lock image">
+      </div>
+      <div class="LoginCard-body">
+        <label class="LoginCard-inputContainer">
+          <!--
+                For attribute is not necesary because the input is inside
+              -->
+          <input class="LoginCard-input" type="text" placeholder="John">
+          <span class="LoginCard-mobileLabel">Username</span>
+        </label>
+        <label class="LoginCard-inputContainer">
+          <!--
+                For attribute is not necesary because the input is inside
+              -->
+          <input class="LoginCard-input" type="password" placeholder="secret">
+          <span class="LoginCard-mobileLabel">Password</span>
+        </label>
+        <div class="PassScore">
+          <div class="PassScore-value"></div>
+          <div class="PassScore-message"></div>
+        </div>
+      </div>
+      <div class="LoginCard-footer">
+        <input class="LoginCard-button" type="submit" value="Login">
+      </div>
+    </form>
+  </div>
+  <script src="./scripts/login.js"></script>
+</body>
+
+</html>
