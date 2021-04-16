@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobify</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    <header class="Header">
+        <span>DevJobs</span>
+    </header>
+    <main class="Content">
+        <section class="Jobs">
+        </section>
+    </main>
+    
+    <template id="tarjetaBase">
+        <article class="Job">
+            <div class="Job-header">
+                <div class="Job-info msg1">
+                    <span class="time">5h ago</span>
+                    •
+                    <span class="workType">Full time</span>
+                </div>
+                <div class="Job-title">
+                    Senior Software Engineer
+                </div>
+                <div class="Job-info company">
+                    So Digital Inc.
+                </div>
+            </div>
+            <div class="Job-footer">
+                <div class="Job-locations">
+                    Remote, Seoul, Tokyio
+                </div>
+                <div class="Job-actions">
+                    <button class="seeMore">I'm interested</button>
+                </div>
+            </div>
+        </article>
+    </template>
+    <script src="//unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/relativeTime.min.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>

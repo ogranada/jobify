@@ -1,0 +1,55 @@
+.Job {
+  position: relative;
+  font-size: 16px;
+  padding: 1.5em;
+  margin: 1em 0;
+  width: 25%;
+  box-sizing: content-box;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &::before {
+    content: "X";
+    position: absolute;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    top: -1em;
+    left: 1em;
+    text-align: center;
+    padding-top: 0.5em;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #e36aad;
+    //// Font awesome styles
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  &-header {
+    font-weight: bold;
+  }
+
+  &-title {
+    font-size: 2em;
+  }
+
+  &-info {
+    color: #7a858c;
+  }
+
+  &-locations {
+    color: #5f64b5;
+    font-weight: bold;
+  }
+
+  &-footer {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+  }
+}
