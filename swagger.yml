@@ -54,7 +54,7 @@ paths:
           description: "Logged in"
         403:
           description: "Not authorized"
-  /main/cards:
+  /main/jobs:
       get:
         summary: "Returns an Array of job cards"
         description: "Returns a bunch of job card with specified informartion"
