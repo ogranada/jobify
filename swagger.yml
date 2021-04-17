@@ -4,7 +4,6 @@ info:
   version: '1.0.0'
 servers:
   - url: https://localhost:3000/api/v1
-
 components:
   schemas:
     User:
@@ -21,15 +20,15 @@ components:
     Card:
       type: object
       properties:
-        time: 
+        time:
           type: string
-        workType: 
-          type: string    
-        title: 
+        workType:
           type: string
-        company: 
+        title:
           type: string
-        locations: 
+        company:
+          type: string
+        locations:
           type: array
           items:
             type: string
@@ -40,7 +39,7 @@ paths:
       description: "Authenticates user login email and password"
       tags:
         - auth, authentication,user,login
-      requestBody: 
+      requestBody:
         description: User data
         required: true
         content:
@@ -52,9 +51,9 @@ paths:
               password: "1234"
       responses:
         200:
-          description: "Logged in"  
+          description: "Logged in"
         403:
-          description: "Not authorized"         
+          description: "Not authorized"
   /main/cards:
       get:
         summary: "Returns an Array of job cards"
@@ -65,13 +64,23 @@ paths:
           200:
             description: "Ok"
             content:
-              application/json: 
+              application/json:
                 schema:
                   $ref: "#/components/schemas/Cards"
                 example:
-                  -
-        
-        
-      
-      
-            
+                  - time: "2021-04-16 19:19:00"
+                    worktype: "Full time"
+                    title: "Junior Web Dev"
+                    company: "Pixar.inc"
+                    locations:
+                      - "USA"
+                      - "Colombia"
+                      - "Peru"
+                  - time: "2021-04-16 19:19:00"
+                    worktype: "Half time"
+                    title: "Junior Android Dev"
+                    company: "Pixar.inc"
+                    locations:
+                      - "USA"
+                      - "Colombia"
+                      - "Peru"
