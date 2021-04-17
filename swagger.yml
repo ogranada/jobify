@@ -1,0 +1,77 @@
+openapi: '3.0.2'
+info:
+  title: jobity API
+  version: '1.0.0'
+servers:
+  - url: https://localhost:3000/api/v1
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Cards:
+      type: array
+      items:
+        $ref:  "#/components/schemas/Card"
+    Card:
+      type: object
+      properties:
+        time: 
+          type: string
+        workType: 
+          type: string    
+        title: 
+          type: string
+        company: 
+          type: string
+        locations: 
+          type: array
+          items:
+            type: string
+paths:
+  /auth/login:
+    post:
+      summary: "Authentication of user"
+      description: "Authenticates user login email and password"
+      tags:
+        - auth, authentication,user,login
+      requestBody: 
+        description: User data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              email: "pepito@yahoo.com"
+              password: "1234"
+      responses:
+        200:
+          description: "Logged in"  
+        403:
+          description: "Not authorized"         
+  /main/cards:
+      get:
+        summary: "Returns an Array of job cards"
+        description: "Returns a bunch of job card with specified informartion"
+        tags:
+          - cards
+        responses:
+          200:
+            description: "Ok"
+            content:
+              application/json: 
+                schema:
+                  $ref: "#/components/schemas/Cards"
+                example:
+                  -
+        
+        
+      
+      
+            
