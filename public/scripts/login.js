@@ -15,7 +15,7 @@ function main() {
 			});
 		}
 	);
-	btn.addEventListener('click', handleSubmit());
+	button.addEventListener('click', handleSubmit);
 }
 
 main();
@@ -34,7 +34,7 @@ async function doLogin() {
 		})
 	})
 	if (response.status !== '401') {
-		window.location.replace('http://localhost:3000/public/index.html');
+		window.location.replace('http://localhost:3000/index.html');
 	} else {
 		alert('Usuario invalido, vuelva a ingresar usuario y contraseña.');
 	}
