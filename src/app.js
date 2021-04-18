@@ -46,47 +46,15 @@ server.get('/api/v1/auth/', (request, response) => {
 
 server.get('/api/v1/jobs', (request, response) => {
  
-    let rawdata = fs.readFileSync('db.json');
-    let jobss = JSON.parse(rawdata);
+    let db_rawdata = fs.readFileSync('./src/db.json');
+
+    let jobss = JSON.parse(db_rawdata);
     
     response
     .status(200)
     .json(jobss);
 
-  /*  
-    async function fxJobs () {
-        const respuesta = await fetch('db.json');
-        const jobs = await respuesta.json();
-        return jobs;
-    }; 
 
-    let rJobs = fxJobs();
-
-    rJobs.then(   
-        data=>{
-        
-          response
-          .status(200)
-          .json(data);                   }
-      )*/  
-
-   
-   /* (async function () {
-        const respuesta = await fetch('db.json');
-        const jobs = await respuesta.json();
-        return jobs;
-    })().then (
-
-        () =>{
-        response
-        .status(200)
-        .json(jobs);}
-    );
-
-*/
-
-
-   // console.log(request.body);
 })
 
 
