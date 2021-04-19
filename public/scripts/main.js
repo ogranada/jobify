@@ -16,19 +16,15 @@ function showJobs(jobs) {
   });
 }
 
-function main() {
-  dayjs.extend(dayjs_plugin_relativeTime);
-  showJobs(
-    Array.from({ length: 100 }).map((x) => ({
-      time: new Date(),
-      workType: "Full Time",
-      msg1: "8h ago . Half Time",
-      title: "Junior Android Dev",
-      company: "Globant",
-      locations: ["Buenos Aires"]
-    }))
-  );
+async function getJobs(){
+  let response = await fetch("api/v1/jobs");
+  let jobs = await response.json();
+  showJobs(jobs);
 }
 
+function main() {
+  dayjs.extend(dayjs_plugin_relativeTime);
+  getJobs();
+}
 
 main();
