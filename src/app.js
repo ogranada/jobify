@@ -26,13 +26,13 @@ const usuarios = [
 ];
 
 
-server.get('/api/v1/auth/', (request, response) => {
-    const  index = usuarios.findIndex(usuario=> (usuario.userName === request.body.userName) && (request.password === request.body.pass)   ); 
+server.post('/api/v1/auth/', (request, response) => {
+    const  index = usuarios.findIndex(usuario=> (usuario.userName === request.body.userName) && (usuario.password === request.body.password)   ); 
 
     if (index !== -1) {
         return  response
         .status(200)
-        .json({ status: "OK"})      
+        .json({ status: "OK"})     
     };
 
     response

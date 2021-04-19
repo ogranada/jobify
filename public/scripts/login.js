@@ -28,12 +28,15 @@ function handleSubmit(e) {
 async function doLogin() {
 	const response = await fetch('http://localhost:3000/api/v1/auth', {
 		method: 'POST',
-		redirect: 'follow',
 		headers: new Headers({
-			'Content-Type': 'text/plain'
+			'Content-Type': 'application/json'
+		}),
+		body: JSON.stringify({
+			userName: username.value,
+			password: password.value
 		})
 	})
-	if (response.status !== '401') {
+	if (response.status !== 401) {
 		window.location.replace('http://localhost:3000/index.html');
 	} else {
 		alert('Usuario invalido, vuelva a ingresar usuario y contraseña.');
