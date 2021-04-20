@@ -39,6 +39,24 @@ server.post('/api/v1/auth/', (request, response) => {
 
 });
 
+server.post('/api/v1/newjob', (request, response) => {
+  let jobs = [];
+  let db_rawdata = fs.readFileSync('./src/db.json');
+  jobs = JSON.parse(db_rawdata);
+  let nuevo = request.body;
+  jobs = [nuevo, ...jobs];
+
+  fs.writeFileSync('./src/db.json', JSON.stringify(jobs, null, 2));
+
+  response
+    .status(200)
+    .json({
+      status: 'saved'
+    })
+    ;
+})
+
+
 
 //function obtener jobs
 
