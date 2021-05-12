@@ -2,15 +2,18 @@
   "name": "workshop-1",
   "version": "1.0.0",
   "description": "trabajo_integrador",
-  "main": "./src/app.js",
+  "main": "./src/app.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/app.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "mariadb": "^2.5.3",
+    "node-fetch": "^2.6.1",
+    "sequelize": "^6.6.2"
   }
 }

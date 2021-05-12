@@ -1,8 +1,17 @@
-const express = require('express');
+import express from "express";
+import fs from "fs";
+import dotenv from "dotenv";
+import { connect } from "./database_models/db.mjs";
+
 const server = express();
-const fs = require('fs');
+//const { connect } = require('./database_models/db.mjs');
+//const express = require('express');
+//const fs = require('fs');
+
+
 server.use(express.json());
 server.use(express.static('public'));
+
 
 
 const usuarios = [
@@ -90,8 +99,12 @@ function cuandoEsteListo() {
   console.log('server is ready...');
 };
 
+dotenv.config();
 
-server.listen(3000, cuandoEsteListo);
+connect().then(() => {
+  server.listen(3000, cuandoEsteListo);
+});
+
 
 
 
