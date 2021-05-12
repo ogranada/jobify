@@ -84,3 +84,25 @@ paths:
                       - "USA"
                       - "Colombia"
                       - "Peru"
+  /job:
+      post:
+        summary: "Creates a new job card"
+        description: "Creates a new job card with specified information"
+        tags:
+          - card
+        responses:
+          201:
+            description: "The new job card has been created."
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Card"
+                example:
+                    time: "2021-04-16 19:19:00"
+                    worktype: "Half time"
+                    title: "Junior Android Dev"
+                    company: "Pixar.inc"
+                    locations:
+                      - "USA"
+                      - "Colombia"
+                      - "Peru"
