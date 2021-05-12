@@ -24,22 +24,9 @@ const usuarios = [
 ];
 
 
-server.post('/api/v1/auth/', (request, response) => {
-  const index = usuarios.findIndex(usuario => (usuario.userName === request.body.userName) && (usuario.password === request.body.password));
 
-  if (index !== -1) {
-    return response
-      .status(200)
-      .json({ status: "OK" })
-  };
 
-  response
-    .status(401)
-    .json({ status: "NO-OK" })
-
-});
-
-server.post('/api/v1/newjob', (request, response) => {
+server.post('/api/v1/job', (request, response) => {
   let jobs = [];
   let db_rawdata = fs.readFileSync('./src/db.json');
   jobs = JSON.parse(db_rawdata);
