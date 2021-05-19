@@ -1,14 +1,12 @@
 import jwt from 'jsonwebtoken';
-
-//esperando nombre funcion database
-//import { validateUser } from '../database/db.mjs';
+import { verifyUser } from '../database_models/db.mjs';
 
 
 export async function authenticate(request, response, next) {
     const CLAVE = process.env.JWT_KEY;
     const username = request.body.username;
     const password = request.body.password;
-    const user = await validateUser(username, password);
+    const user = await verifyUser (username, password);
     if (user) {
 
         // Inyectar el token

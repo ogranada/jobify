@@ -1,18 +1,23 @@
-// import { Router } from 'express';
+import { Router } from 'express';
+import { verifyUser } from '../database_models/db.mjs';
 import { authenticate } from '../middlewares/auth.middleware.mjs'
 
+// GraphQL
 
-server.post('/api/v1/auth/', (request, response) => {
-    const index = usuarios.findIndex(usuario => (usuario.userName === request.body.userName) && (usuario.password === request.body.password));
+export function createRouter() {
+    const router = Router();
+    router.post('/login', authenticate, async (request, response) => {
+        try {
+            return response
+                    .status(200)
+                    .json(request.user)
 
-    if (index !== -1) {
-        return response
-            .status(200)
-            .json({ status: "OK" })
-    };
+        } catch (error) {
+            response
+                .status(error.status || 500)
+                .json({ status: error.message })
 
-    response
-        .status(401)
-        .json({ status: "NO-OK" })
-
-});
+        }
+    });
+    return router;
+}

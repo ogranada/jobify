@@ -12,8 +12,8 @@
   "dependencies": {
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "mariadb": "^2.5.3",
     "jsonwebtoken": "^8.5.1",
+    "mariadb": "^2.5.3",
     "sequelize": "^6.6.2"
   }
 }

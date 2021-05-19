@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import { createModel as createUsersModel } from './users.mjs';
 import { createModel as createJobsModel } from './jobs.mjs';
+import { DBError } from '../common/errors.mjs';
 
 const DB_MODELS = {};
 
@@ -27,26 +28,34 @@ export async function connect() {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
     DB_MODELS.Job = createJobsModel(sequelize);
-    // await DB_MODELS.Job.sync({ force: false });
-
     DB_MODELS.User = createUsersModel(sequelize);
-    // await DB_MODELS.User.sync({ force: false });
-
-    // DB_MODELS.Author = createAuthorsModel(sequelize);
-    // // await DB_MODELS.Book.sync({ force: false });
-
-    // DB_MODELS.Book = createBooksModel(sequelize);
-    // // await DB_MODELS.Book.sync({ force: false });
-
-    // DB_MODELS.Job.hasMany(DB_MODELS.User);
-    // DB_MODELS.User.belongsTo(DB_MODELS.Rol);
-
-    // DB_MODELS.Book.belongsToMany(DB_MODELS.Author, { through: 'authors_books'});
-    // DB_MODELS.Author.belongsToMany(DB_MODELS.Book, { through: 'authors_books'});
-
     await sequelize.sync({ force: false })
   } catch (error) {
     console.error('Unable to connect to the database:', error);
     throw error;
+  }
+}
+
+export async function verifyUser(username, password) {
+  try {
+    /** @type {Sequelize.Model} */
+    const User = DB_MODELS.User;
+    const foundUser = await User.findOne({
+      where: {
+        username,
+        password
+      } 
+    });
+    return foundUser.toJSON();
+  } catch (error) {
+    let myError;
+    switch (error.original.code) {
+      case 'ECONNREFUSED':
+        throw new DBError(`Failure accesing to the database`, 500);
+      default:
+        myError = new Error(`Critical database failure.`);
+        myError.status = 500;
+        throw myError;
+    }
   }
 }
