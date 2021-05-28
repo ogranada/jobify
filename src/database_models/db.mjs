@@ -36,6 +36,36 @@ export async function connect() {
   }
 }
 
+
+export async function createJob(data={}) {
+  try {
+    /** @type {Sequelize.Model} */
+    const Job = DB_MODELS.Job;
+    const job = await Job.create(data);
+    await job.save()
+    return job.toJSON();
+  } catch(error) {
+    console.error(error);
+    throw new Error('Invalid job creation.')
+  }
+}
+
+export async function getJobs(filter={}) {
+  try {
+    /** @type {Sequelize.Model} */
+    const Job = DB_MODELS.Job;
+    const jobs = await Job.findAll({
+      where: {
+        ...filter
+      }
+    });
+    return jobs;
+  } catch(error) {
+    console.error(error);
+    throw new Error('Invalid job request action.')
+  }
+}
+
 export async function verifyUser(username, password) {
   try {
     /** @type {Sequelize.Model} */

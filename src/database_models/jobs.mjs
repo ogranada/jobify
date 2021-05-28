@@ -10,6 +10,7 @@ export function createModel(sequelize) {
     },
     time: {
       type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
       allowNull: false,
     },
     workType: {
