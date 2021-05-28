@@ -18,7 +18,7 @@ function cuandoEsteListo() {
 dotenv.config();
 
 connect().then(() => {
-  server.listen(3000, cuandoEsteListo);
+  server.listen(process.env.PORT || 3000, cuandoEsteListo);
 });
 
 
